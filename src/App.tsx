@@ -1,12 +1,10 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import './App.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from './redux/store';
-import {addTodolist, changeTodoTitle, deleteTodolist, TodolistType} from './reducers/todolistsReducer';
-import {InitialStateType} from './reducers/tasksReducer';
+import {addTodolist, TodolistType} from './reducers/todolistsReducer';
 import AddItemForm from './components/AddItemForm';
-import EditableSpan from './components/EditableSpan';
-import Todolist from './components/Todolist';
+import Todolist from './components/Todolist/Todolist';
 
 function App() {
   console.log('App rendering')
@@ -16,6 +14,8 @@ function App() {
   const addTodo = useCallback((newTodoTitle: string) => {
     dispatch(addTodolist(newTodoTitle))
   },[])
+
+
 
 
   return (
