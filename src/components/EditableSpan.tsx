@@ -6,6 +6,7 @@ type EditableSpanType = {
 }
 
 const EditableSpan = memo((props: EditableSpanType) => {
+    console.log('EditableSpan rendering')
     const [isEditMode, setEditMode] = useState(false)
     const [newTitle, setNewTitle] = useState(props.title)
     const [error, setError] = useState<string | null>(null)

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo} from 'react';
+import React, {ChangeEvent, memo, useCallback} from 'react';
 import {changeTaskStatus, changeTaskTitle, deleteTask, TaskType} from '../reducers/tasksReducer';
 import {useDispatch} from 'react-redux';
 import EditableSpan from './EditableSpan';
@@ -10,13 +10,15 @@ type TaskUIType = {
 
 const Task = memo(({task, todoId}: TaskUIType) => {
     console.log('Task rendering')
+
     const dispatch = useDispatch()
-    const changeTaskTitleHandler = (newTitle: string) => {
+
+    const changeTaskTitleHandler = useCallback((newTitle: string) => {
         dispatch(changeTaskTitle(todoId, task.taskId, newTitle))
-    }
-    const changeTaskStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    }, [todoId, task.taskId])
+    const changeTaskStatusHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         dispatch(changeTaskStatus(todoId, task.taskId, e.currentTarget.checked))
-    }
+    }, [todoId, task.taskId])
     const deleteTaskHandler = () => {
         dispatch(deleteTask(todoId, task.taskId))
     }

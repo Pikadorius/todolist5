@@ -8,15 +8,13 @@ import Todolist from './components/Todolist/Todolist';
 
 function App() {
   console.log('App rendering')
+
   const todolists=useSelector<RootStateType, TodolistType[]>(state=>state.todolists)
   const dispatch = useDispatch()
 
   const addTodo = useCallback((newTodoTitle: string) => {
     dispatch(addTodolist(newTodoTitle))
   },[])
-
-
-
 
   return (
     <div className="App">

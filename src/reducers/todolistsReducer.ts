@@ -1,6 +1,4 @@
-import {retry} from '@reduxjs/toolkit/query';
 import {v1} from 'uuid';
-import {configureStore} from '@reduxjs/toolkit';
 
 export type TodolistType = {
     title: string
